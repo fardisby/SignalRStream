@@ -8,10 +8,10 @@ namespace SignalRStream
     public class TestHub : Hub
     {
 
-        public IAsyncEnumerable<double> TestStrteam(CancellationToken cancellationToken)
+        public IAsyncEnumerable<double> TestStream(CancellationToken cancellationToken)
         {
             List<PriceInfo> priceInfos = new List<PriceInfo>()
-            {
+             {
                 new PriceInfo{Symbol="APPL", Price = 2300},
                 new PriceInfo{Symbol="APPL", Price = 2310},
                 new PriceInfo{Symbol="APPL", Price = 2330},
@@ -20,7 +20,7 @@ namespace SignalRStream
                 new PriceInfo{Symbol="APPL", Price = 2360},
                 new PriceInfo{Symbol="APPL", Price = 2320},
                 new PriceInfo{Symbol="APPL", Price = 2300},
-            };
+};
 
             PriceService priceService = new PriceService();
 
@@ -30,6 +30,7 @@ namespace SignalRStream
 
             return priceService.PriceChange.StartWith(priceInfos).Select(p => p.Price).ToAsyncEnumerable();
         }
+
 
         public async Task WriteItems(ChannelWriter<string> writer, int delay, CancellationToken cancellationToken)
         {

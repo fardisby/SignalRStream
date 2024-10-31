@@ -6,13 +6,16 @@
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
-    <div class="messages-contianer">
+    <div class="messages-container">
         <ul id="messagesList">
         </ul>
     </div>
 </div>
 
 @section scripts {
+    <!-- Include the SignalR script -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/7.0.3/signalr.min.js"></script>
+
     <script type="text/javascript">
         const connection = new signalR.HubConnectionBuilder()
             .withUrl("/testhub")
@@ -38,9 +41,8 @@
             subscribeToStream();
         });
 
-
         async function subscribeToStream() {
-            connection.stream("TestStrteam")
+            connection.stream("TestStream")
                 .subscribe({
                     next: (item) => {
                         var li = document.createElement("li");

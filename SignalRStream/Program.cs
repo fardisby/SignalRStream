@@ -28,14 +28,20 @@ namespace SignalRStreamTestApp
 
             app.MapRazorPages();
 
-            app.MapHub<TestHub>("/testhub", options =>
+           /* app.MapHub<TestHub>("/testhub", options =>
             {
                 options.Transports =
                     HttpTransportType.WebSockets |
                     HttpTransportType.LongPolling;
-            });
+            });*/
 
-            app.Run();
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapHub<TestHub>("/testhub");
+            });
+        
+
+        app.Run();
         }
     }
 }
