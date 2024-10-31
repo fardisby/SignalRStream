@@ -20,7 +20,7 @@ namespace SignalRStream
                 new PriceInfo{Symbol="APPL", Price = 2360},
                 new PriceInfo{Symbol="APPL", Price = 2320},
                 new PriceInfo{Symbol="APPL", Price = 2300},
-};
+              };
 
             PriceService priceService = new PriceService();
 
